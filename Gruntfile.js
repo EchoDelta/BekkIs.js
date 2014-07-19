@@ -1,43 +1,47 @@
-var lessFiles = ['./styles/*.less'],
-    cssDestination = './public/styles.css',
-    browserifyFiles = ['./js/app.js'],
-    jsScriptDestination = './public/script.js';
+var lessFiles = {'./public/styles.css': ['./styles/*.less']},
+    browserifyFiles = {'./public/script.js': ['./js/app.js']},
+    uglifyFiles = {'./public/script.js': ['./public/script.js']},
+    copyFiles = {'./public/vendor/backbone.js': ['./node_modules/backbone/backbone-min.js']};
 
 module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
 	grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         less: {
             dev: {
-                src: lessFiles,
-                dest: cssDestination
+                files: lessFiles
             },
         	prod: {
-	        	src: lessFiles,
-	        	dest: cssDestination
+	        	files: lessFiles
         	}
         },
         browserify: {
             dev: {
-                src: browserifyFiles,
-                dest: jsScriptDestination
+                files: browserifyFiles
             },
             prod: {
-                src: browserifyFiles,
-                dest: jsScriptDestination
+                files: browserifyFiles
             }
         },
         uglify: {
             prod: {
-                src: jsScriptDestination,
-                dest: jsScriptDestination
+                files: uglifyFiles
+            }
+        },
+        copy: {
+            dev: {
+                files: copyFiles
+            },
+            prod: {
+                files: copyFiles
             }
         }
     });
 
-    grunt.registerTask('dev', ['less:dev', 'browserify:dev']);
-    grunt.registerTask('prod', ['less:prod', 'browserify:prod', 'uglify:prod']);
+    grunt.registerTask('dev', ['less:dev', 'browserify:dev', 'copy:dev']);
+    grunt.registerTask('prod', ['less:prod', 'browserify:prod', 'copy:dev', 'uglify:prod']);
 };

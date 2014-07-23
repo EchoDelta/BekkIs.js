@@ -1,13 +1,14 @@
 var lessFiles = {'./public/styles.css': ['./styles/*.less']},
     browserifyFiles = {'./public/script.js': ['./js/app.js']},
     uglifyFiles = {'./public/script.js': ['./public/script.js']},
-    copyFiles = {'./public/vendor/backbone.js': ['./node_modules/backbone/backbone-min.js']};
+    handlebarsFiles = {'./public/templates.js': ['./templates/*.hbs']};
 
 module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
 
 	grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -32,16 +33,16 @@ module.exports = function(grunt){
                 files: uglifyFiles
             }
         },
-        copy: {
+        handlebars: {
             dev: {
-                files: copyFiles
+                files: handlebarsFiles
             },
             prod: {
-                files: copyFiles
+                files: handlebarsFiles
             }
         }
     });
 
-    grunt.registerTask('dev', ['less:dev', 'browserify:dev', 'copy:dev']);
-    grunt.registerTask('prod', ['less:prod', 'browserify:prod', 'copy:dev', 'uglify:prod']);
+    grunt.registerTask('dev', ['less:dev', 'browserify:dev', 'handlebars:dev']);
+    grunt.registerTask('prod', ['less:prod', 'browserify:prod', 'uglify:prod', 'handlebars:prod']);
 };

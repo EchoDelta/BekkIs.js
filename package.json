@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "grunt dev; node ./bin/www"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-browserify": "^2.1.3",
+    "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-handlebars": "^0.8.0",
     "grunt-contrib-jshint": "^0.10.0",
@@ -20,13 +21,17 @@
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "express": "^4.6.1",
-    "handlebars": "^2.0.0-alpha.4",
+    "handlebars": "<2.0.0",
     "jade": "~1.3.0",
+    "jquery": "^2.1.1",
     "lodash": "^2.4.1",
     "morgan": "~1.0.0",
-    "static-favicon": "~1.0.0"
+    "static-favicon": "~1.0.0",
+    "underscore": "^1.6.0"
   },
   "browser": {
-    "backbone": "./node_modules/backbone/backbone.js"
+    "backbone": "./node_modules/backbone/backbone.js",
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "handlebars": "./node_modules/handlebars/dist/handlebars.js"
   }
 }

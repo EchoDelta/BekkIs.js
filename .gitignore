@@ -27,4 +27,6 @@ node_modules
 
 public/styles.css
 public/script.js
-public/vendor
+public/vendor.js
+public/templates.js
+templates/compiled.js

@@ -1,0 +1,39 @@
+@import "variables.less";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    color: @color-main-foreground;
+}
+
+.application-header {
+    background-color: @color-header-background;
+    color: @color-header-foreground;
+    overflow: hidden;
+    padding: @margin-main / 2 @margin-main;
+    border-bottom: 1px solid @color-header-border;
+
+    .application-title {
+        display: block;
+        width: 50%;
+        float: left;
+        font-size: 1.5em;
+    }
+
+    .balance {
+        width: 20%;
+        float: right;
+
+        .balance-title {
+            font-size: 0.8em;
+            display: inline;
+        }
+        .balance-balance {
+            font-size: 1.1em;
+            display: inline;
+        }
+    }
+}

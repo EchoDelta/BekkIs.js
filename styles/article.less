@@ -1,0 +1,31 @@
+@import "variables.less";
+
+.article {
+    overflow: hidden;
+
+    .article-name, .article-price, .article-buy {
+        float: left;
+        padding: @margin-main 0.5em;
+    }
+    .article-name {
+        width: 50%;
+        padding-left: @margin-main;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .article-price {
+        width: 25%;
+    }
+
+    .article-buy {
+        background-color: @color-main-button;
+        color: @color-main-button-text;
+        text-align: center;
+        border: none;
+        width: 25%;
+        font-size: 1em;
+        margin: 0;
+    }
+}

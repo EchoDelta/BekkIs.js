@@ -1,5 +1,6 @@
 var ArticleView = Backbone.View.extend({
     tagName: 'article',
+    className: 'article',
     initialize: function(){
         this.template = templates['./templates/article.hbs'];
         this.render();

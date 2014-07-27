@@ -18,7 +18,7 @@ module.exports = function(grunt){
             }
         },
         less: {
-            './public/styles.css': ['./styles/*.less']
+            './public/styles.css': ['./styles/source.less']
         },
         concat: {
             './public/vendor.js': [

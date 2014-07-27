@@ -2,6 +2,7 @@ var Account = require('../models/account');
 
 var BalanceView = Backbone.View.extend({
     initialize: function(){
+        this.template = this.template = templates['./templates/balance.hbs'];
         this.account = new Account();
         this.account.on('change', this.render, this);
 
@@ -12,7 +13,7 @@ var BalanceView = Backbone.View.extend({
         this.account.fetch()
     },
     render: function(){
-        this.$el.text(this.account.get("balance"));
+        this.$el.html(this.template({balance: this.account.get("balance")}));
     }
 });
 

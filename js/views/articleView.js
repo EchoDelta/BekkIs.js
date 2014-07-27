@@ -13,6 +13,7 @@ var ArticleView = Backbone.View.extend({
 
     buyArticle: function(){
         this.model.buy();
+        Backbone.trigger('article:buy');
     }
 });
 

@@ -17,7 +17,7 @@ ArticleRepository.prototype.getArticles = function() {
 };
 
 ArticleRepository.prototype.getArticle = function(id) {
-    return _.first(this._articles, {'id': id})[0];
+    return _.where(this._articles, {'id': id})[0];
 }
 
 module.exports = ArticleRepository;

@@ -1,5 +1,7 @@
+var _ = require('lodash');
+
 function ArticleRepository(){
-    global.articles = global.articles || [
+    this._articles = global.articles || [
         {id: 1, name: "Mini Push Cola", price: 5.0},
         {id: 2, name: "Snickers", price: 10.0},
         {id: 3, name: "Krone-is sjokolade", price: 10.0},
@@ -11,7 +13,11 @@ function ArticleRepository(){
 };
 
 ArticleRepository.prototype.getArticles = function() {
-	return global.articles;
+	return this._articles;
 };
+
+ArticleRepository.prototype.getArticle = function(id) {
+    return _.first(this._articles, {'id': id})[0];
+}
 
 module.exports = ArticleRepository;
